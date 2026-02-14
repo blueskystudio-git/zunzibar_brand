@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zunzibar — Refined Visual Direction v2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* ── REFINED PALETTE ── */
+      --midnight-tide:   #1B365D;
+      --midnight-deep:   #0F2240;
+      --coastal-sand:    #F5F0E8;
+      --stone-linen:     #EDE8DF;
+      --driftwood:       #C9A962;
+      --driftwood-light: #D4BA7A;
+      --sea-glass:       #8B9A8B;
+      --sea-glass-light: #A8B5A8;
+      --coral-sunset:    #D4785A;   /* C3 accent */
+      --coral-hover:     #C06A4E;
+      --charcoal:        #2D2D2D;   /* C3 dark neutral */
+      --charcoal-soft:   #4A4A4A;
+      --warm-white:      #FAFAF7;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--warm-white);
+      color: var(--charcoal);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ═══════════════════════════════════════
+       COVER
+    ═══════════════════════════════════════ */
+    .cover {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: var(--midnight-tide);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      padding: 60px 40px;
+    }
+
+    .cover::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 80%, rgba(201,169,98,0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(212,120,90,0.06) 0%, transparent 50%),
+        linear-gradient(180deg, rgba(15,34,64,0.4) 0%, transparent 40%);
+    }
+
+    .cover > * { position: relative; z-index: 1; }
+
+    .cover-badge {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--driftwood);
+      border: 1px solid rgba(201,169,98,0.3);
+      padding: 8px 20px;
+      border-radius: 2px;
+      margin-bottom: 50px;
+    }
+
+    .cover h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 8vw, 6rem);
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      color: var(--coastal-sand);
+      margin-bottom: 16px;
+    }
+
+    .cover .tagline {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--driftwood);
+      font-weight: 400;
+      margin-bottom: 60px;
+    }
+
+    .cover .doc-meta {
+      font-size: 0.85rem;
+      color: rgba(245,240,232,0.5);
+      font-weight: 300;
+    }
+
+    .cover .doc-meta strong {
+      color: rgba(245,240,232,0.7);
+      font-weight: 500;
+    }
+
+    /* ═══════════════════════════════════════
+       SECTION FOUNDATIONS
+    ═══════════════════════════════════════ */
+    section {
+      padding: 80px 40px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--coral-sunset);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 400;
+      color: var(--midnight-tide);
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .section-intro {
+      font-size: 1rem;
+      color: var(--charcoal-soft);
+      max-width: 680px;
+      line-height: 1.75;
+    }
+
+    .divider {
+      width: 60px;
+      height: 1px;
+      background: var(--driftwood);
+      margin: 50px 0;
+    }
+
+    /* ═══════════════════════════════════════
+       BLEND RATIONALE
+    ═══════════════════════════════════════ */
+    .blend-section {
+      background: var(--coastal-sand);
+    }
+
+    .blend-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .blend-card {
+      padding: 36px;
+      border-radius: 8px;
+      position: relative;
+    }
+
+    .blend-card.primary {
+      background: var(--midnight-tide);
+      color: var(--coastal-sand);
+    }
+
+    .blend-card.secondary {
+      background: white;
+      border: 1px solid rgba(29,78,95,0.12);
+    }
+
+    .blend-percent {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 300;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .blend-card.primary .blend-percent { color: var(--driftwood); }
+    .blend-card.secondary .blend-percent { color: var(--coral-sunset); }
+
+    .blend-name {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .blend-card.primary .blend-name { color: rgba(245,240,232,0.6); }
+    .blend-card.secondary .blend-name { color: var(--charcoal-soft); }
+
+    .blend-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .blend-list li {
+      font-size: 0.9rem;
+      padding-left: 16px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .blend-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      opacity: 0.4;
+    }
+
+    .blend-card.primary .blend-list li { color: rgba(245,240,232,0.85); }
+
+    /* ═══════════════════════════════════════
+       COLOR PALETTE
+    ═══════════════════════════════════════ */
+    .palette-section {
+      background: var(--warm-white);
+    }
+
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .color-card {
+      border-radius: 8px;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .color-swatch {
+      height: 120px;
+      position: relative;
+    }
+
+    .color-swatch .origin-tag {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 2px;
+      background: rgba(0,0,0,0.25);
+      color: white;
+    }
+
+    .color-info {
+      padding: 16px;
+    }
+
+    .color-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--midnight-tide);
+      margin-bottom: 4px;
+    }
+
+    .color-role {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--charcoal-soft);
+      margin-bottom: 10px;
+    }
+
+    .color-codes {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .color-code {
+      font-size: 0.75rem;
+      font-family: 'DM Sans', sans-serif;
+      color: #888;
+    }
+
+    .color-code span {
+      font-weight: 500;
+      color: var(--charcoal);
+      display: inline-block;
+      min-width: 38px;
+    }
+
+    .palette-usage {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .usage-bar {
+      border-radius: 8px;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .usage-bar.dark {
+      background: var(--midnight-tide);
+      color: var(--coastal-sand);
+    }
+
+    .usage-bar.light {
+      background: var(--coastal-sand);
+      color: var(--midnight-tide);
+    }
+
+    .usage-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.6;
+      margin-bottom: 4px;
+    }
+
+    .usage-sample {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+    }
+
+    .usage-cta {
+      display: inline-block;
+      padding: 10px 28px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .usage-cta.coral {
+      background: var(--coral-sunset);
+      color: white;
+    }
+
+    .usage-cta.gold {
+      background: var(--driftwood);
+      color: var(--midnight-tide);
+    }
+
+    /* ═══════════════════════════════════════
+       TYPOGRAPHY
+    ═══════════════════════════════════════ */
+    .type-section {
+      background: var(--coastal-sand);
+    }
+
+    .type-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      margin-top: 40px;
+    }
+
+    .type-specimen {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .type-role {
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--coral-sunset);
+      margin-bottom: 4px;
+    }
+
+    .type-preview-display {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.2rem;
+      font-weight: 400;
+      color: var(--midnight-tide);
+      line-height: 1.15;
+      letter-spacing: 0.02em;
+    }
+
+    .type-preview-body {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--charcoal);
+      line-height: 1.7;
+    }
+
+    .type-preview-ui {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      letter-spacing: 0.03em;
+    }
+
+    .type-meta {
+      font-size: 0.8rem;
+      color: var(--charcoal-soft);
+      margin-top: 6px;
+    }
+
+    .type-meta strong { color: var(--midnight-tide); }
+
+    .type-hierarchy {
+      margin-top: 40px;
+      background: white;
+      border-radius: 10px;
+      padding: 40px;
+    }
+
+    .type-hierarchy-title {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--charcoal-soft);
+      margin-bottom: 30px;
+    }
+
+    .hier-row {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .hier-row:last-child { border-bottom: none; }
+
+    .hier-level {
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--sea-glass);
+      min-width: 90px;
+      flex-shrink: 0;
+    }
+
+    .hier-sample { flex: 1; }
+
+    .hier-spec {
+      font-size: 0.7rem;
+      color: #aaa;
+      min-width: 200px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    /* ═══════════════════════════════════════
+       LOGO SYSTEM
+    ═══════════════════════════════════════ */
+    .logo-section {
+      background: var(--warm-white);
+    }
+
+    .logo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .logo-box {
+      aspect-ratio: 16/10;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      position: relative;
+    }
+
+    .logo-box .env-label {
+      position: absolute;
+      top: 16px;
+      left: 20px;
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.4;
+    }
+
+    .logo-box.sand { background: var(--coastal-sand); }
+    .logo-box.navy { background: var(--midnight-tide); }
+    .logo-box.white { background: white; border: 1px solid #eee; }
+    .logo-box.charcoal { background: var(--charcoal); }
+
+    .logo-wordmark {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+    }
+
+    .logo-wordmark.navy-text { color: var(--midnight-tide); }
+    .logo-wordmark.sand-text { color: var(--coastal-sand); }
+    .logo-wordmark.white-text { color: white; }
+
+    .logo-sub {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+    }
+
+    .logo-sub.gold { color: var(--driftwood); }
+    .logo-sub.coral { color: var(--coral-sunset); }
+    .logo-sub.sea { color: var(--sea-glass); }
+
+    /* Icons */
+    .icon-system {
+      margin-top: 50px;
+    }
+
+    .icon-row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .icon-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .icon-box {
+      width: 64px;
+      height: 64px;
+      border-radius: 14px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+    }
+
+    .icon-box .mono {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 500;
+    }
+
+    .icon-box svg {
+      width: 60%;
+      height: 60%;
+    }
+
+    .icon-caption {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #999;
+    }
+
+    /* ═══════════════════════════════════════
+       DIGITAL APPLICATIONS
+    ═══════════════════════════════════════ */
+    .digital-section {
+      background: var(--charcoal);
+      color: var(--coastal-sand);
+    }
+
+    .digital-section .section-label { color: var(--coral-sunset); }
+    .digital-section .section-title { color: var(--coastal-sand); }
+    .digital-section .section-intro { color: rgba(245,240,232,0.65); }
+
+    .digital-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .digital-card {
+      border-radius: 10px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .digital-card.navy-bg { background: var(--midnight-tide); }
+    .digital-card.dark-bg { background: rgba(255,255,255,0.06); }
+    .digital-card.coral-bg { background: var(--coral-sunset); color: white; }
+
+    .dc-label {
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.5;
+    }
+
+    .dc-sample {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+    }
+
+    .dc-button {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 4px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-align: center;
+      margin-top: auto;
+    }
+
+    .dc-button.coral { background: var(--coral-sunset); color: white; }
+    .dc-button.gold { background: var(--driftwood); color: var(--midnight-tide); }
+    .dc-button.outline { border: 1px solid rgba(245,240,232,0.3); color: var(--coastal-sand); }
+    .dc-button.white { background: white; color: var(--midnight-tide); }
+
+    .dc-nav {
+      display: flex;
+      gap: 24px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .dc-nav span { opacity: 0.5; }
+    .dc-nav span.active { opacity: 1; color: var(--driftwood); }
+
+    /* ═══════════════════════════════════════
+       PHYSICAL APPLICATIONS
+    ═══════════════════════════════════════ */
+    .physical-section {
+      background: var(--coastal-sand);
+    }
+
+    .physical-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .physical-card {
+      aspect-ratio: 4/5;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .physical-card.navy { background: var(--midnight-tide); color: var(--coastal-sand); }
+    .physical-card.sand { background: var(--stone-linen); color: var(--midnight-tide); border: 1px solid rgba(0,0,0,0.06); }
+    .physical-card.leather { background: #5C4033; color: var(--coastal-sand); }
+
+    .pc-type {
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      opacity: 0.5;
+    }
+
+    .pc-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+    }
+
+    .pc-sub {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    /* ═══════════════════════════════════════
+       USAGE RULES
+    ═══════════════════════════════════════ */
+    .rules-section {
+      background: var(--warm-white);
+    }
+
+    .rules-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .rule-card {
+      padding: 28px;
+      border-radius: 8px;
+      border: 1px solid rgba(0,0,0,0.08);
+      background: white;
+    }
+
+    .rule-card h4 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .rule-card h4.do { color: var(--sea-glass); }
+    .rule-card h4.dont { color: var(--coral-sunset); }
+
+    .rule-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .rule-list li {
+      font-size: 0.85rem;
+      padding-left: 20px;
+      position: relative;
+      color: var(--charcoal-soft);
+      line-height: 1.5;
+    }
+
+    .rule-list.do li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--sea-glass);
+      font-weight: 700;
+    }
+
+    .rule-list.dont li::before {
+      content: '✕';
+      position: absolute;
+      left: 0;
+      color: var(--coral-sunset);
+      font-weight: 700;
+    }
+
+    /* ═══════════════════════════════════════
+       SUMMARY
+    ═══════════════════════════════════════ */
+    .summary-section {
+      background: var(--midnight-tide);
+      color: var(--coastal-sand);
+      text-align: center;
+    }
+
+    .summary-section .section-title { color: var(--coastal-sand); }
+
+    .summary-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 40px;
+      text-align: left;
+    }
+
+    .summary-table th {
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--driftwood);
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(245,240,232,0.15);
+    }
+
+    .summary-table td {
+      padding: 14px 16px;
+      font-size: 0.9rem;
+      border-bottom: 1px solid rgba(245,240,232,0.06);
+      vertical-align: top;
+    }
+
+    .summary-table .source-badge {
+      display: inline-block;
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 2px;
+      margin-left: 6px;
+    }
+
+    .source-badge.c1 { background: rgba(201,169,98,0.2); color: var(--driftwood); }
+    .source-badge.c3 { background: rgba(212,120,90,0.2); color: var(--coral-sunset); }
+
+    .footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 0.75rem;
+      color: rgba(245,240,232,0.35);
+      background: var(--midnight-deep);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      section { padding: 60px 24px; }
+      .blend-grid,
+      .type-grid,
+      .palette-usage,
+      .logo-grid,
+      .rules-grid { grid-template-columns: 1fr; }
+      .digital-grid,
+      .physical-grid,
+      .palette-grid { grid-template-columns: 1fr 1fr; }
+      .hier-spec { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════ COVER ═══════ -->
+  <section class="cover">
+    <div class="cover-badge">Revised Visual Direction — v2</div>
+    <h1>ZUNZIBAR</h1>
+    <p class="tagline">Coastal Cuisine + Curated Cocktails</p>
+    <p class="doc-meta">
+      <strong>Refined Coastal Classic × Modern Edge</strong><br>
+      80/20 Blend — February 2026
+    </p>
+  </section>
+
+  <!-- ═══════ BLEND RATIONALE ═══════ -->
+  <section class="blend-section">
+    <div class="container">
+      <p class="section-label">The Direction</p>
+      <h2 class="section-title">One Voice, Two Registers</h2>
+      <p class="section-intro">
+        Concept 1's timeless sophistication anchors the brand across menus, signage, and the physical experience. Concept 3's contemporary edge sharpens the digital presence — where Gen Z and millennial "coastal tastemakers" will discover Zunzibar first.
+      </p>
+
+      <div class="blend-grid">
+        <div class="blend-card primary">
+          <div class="blend-percent">80%</div>
+          <div class="blend-name">Refined Coastal Classic</div>
+          <ul class="blend-list">
+            <li>Maritime Navy + Coastal Sand + Driftwood Gold foundation</li>
+            <li>Cormorant Garamond as primary display typeface</li>
+            <li>Botanical palm tree illustration in logo</li>
+            <li>Embossed menus, foil-stamped collateral, linen textures</li>
+            <li>Timeless, confident, "lived-in luxury" tone</li>
+            <li>Drives: physical space, menus, signage, merch, print</li>
+          </ul>
+        </div>
+
+        <div class="blend-card secondary">
+          <div class="blend-percent">20%</div>
+          <div class="blend-name">Modern Coastal</div>
+          <ul class="blend-list">
+            <li>Coral Sunset as digital CTA and action color</li>
+            <li>DM Sans for UI navigation, buttons, and forms</li>
+            <li>Charcoal for enhanced digital readability</li>
+            <li>Clean, bold icon treatments for social avatars</li>
+            <li>Contemporary, design-forward energy for screens</li>
+            <li>Drives: website, social media, email, digital ads</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ COLOR PALETTE ═══════ -->
+  <section class="palette-section">
+    <div class="container">
+      <p class="section-label">Color System</p>
+      <h2 class="section-title">The Refined Palette</h2>
+      <p class="section-intro">
+        Six colors with clear roles. The C1 foundation provides the soul; Coral Sunset from C3 injects energy where it matters most — calls to action, social highlights, and digital engagement points.
+      </p>
+
+      <div class="palette-grid">
+        <div class="color-card">
+          <div class="color-swatch" style="background: var(--midnight-tide);">
+            <span class="origin-tag">C1</span>
+          </div>
+          <div class="color-info">
+            <div class="color-name">Midnight Tide</div>
+            <div class="color-role">Primary Brand</div>
+            <div class="color-codes">
+              <div class="color-code"><span>HEX</span> #1B365D</div>
+              <div class="color-code"><span>RGB</span> 27, 54, 93</div>
+              <div class="color-code"><span>CMYK</span> 91, 72, 31, 15</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="color-card">
+          <div class="color-swatch" style="background: var(--coastal-sand);">
+            <span class="origin-tag">C1</span>
+          </div>
+          <div class="color-info">
+            <div class="color-name">Coastal Sand</div>
+            <div class="color-role">Background / Light</div>
+            <div class="color-codes">
+              <div class="color-code"><span>HEX</span> #F5F0E8</div>
+              <div class="color-code"><span>RGB</span> 245, 240, 232</div>
+              <div class="color-code"><span>CMYK</span> 3, 3, 7, 0</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="color-card">
+          <div class="color-swatch" style="background: var(--driftwood);">
+            <span class="origin-tag">C1</span>
+          </div>
+          <div class="color-info">
+            <div class="color-name">Driftwood Gold</div>
+            <div class="color-role">Accent / Highlight</div>
+            <div class="color-codes">
+              <div class="color-code"><span>HEX</span> #C9A962</div>
+              <div class="color-code"><span>RGB</span> 201, 169, 98</div>
+              <div class="color-code"><span>CMYK</span> 19, 27, 66, 1</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="color-card">
+          <div class="color-swatch" style="background: var(--sea-glass);">
+            <span class="origin-tag">C1</span>
+          </div>
+          <div class="color-info">
+            <div class="color-name">Sea Glass</div>
+            <div class="color-role">Tertiary / Botanical</div>
+            <div class="color-codes">
+              <div class="color-code"><span>HEX</span> #8B9A8B</div>
+              <div class="color-code"><span>RGB</span> 139, 154, 139</div>
+              <div class="color-code"><span>CMYK</span> 42, 24, 39, 3</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="color-card">
+          <div class="color-swatch" style="background: var(--coral-sunset);">
+            <span class="origin-tag">C3</span>
+          </div>
+          <div class="color-info">
+            <div class="color-name">Coral Sunset</div>
+            <div class="color-role">Digital Action / CTA</div>
+            <div class="color-codes">
+              <div class="color-code"><span>HEX</span> #D4785A</div>
+              <div class="color-code"><span>RGB</span> 212, 120, 90</div>
+              <div class="color-code"><span>CMYK</span> 11, 58, 63, 1</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="color-card">
+          <div class="color-swatch" style="background: var(--charcoal);">
+            <span class="origin-tag">C3</span>
+          </div>
+          <div class="color-info">
+            <div class="color-name">Charcoal</div>
+            <div class="color-role">Text / Digital Dark</div>
+            <div class="color-codes">
+              <div class="color-code"><span>HEX</span> #2D2D2D</div>
+              <div class="color-code"><span>RGB</span> 45, 45, 45</div>
+              <div class="color-code"><span>CMYK</span> 68, 62, 59, 56</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Usage examples -->
+      <div class="palette-usage">
+        <div class="usage-bar dark">
+          <div>
+            <div class="usage-label">Physical + Print</div>
+            <div class="usage-sample">Menu, Signage, Coasters</div>
+          </div>
+          <div style="margin-left: auto;">
+            <span class="usage-cta gold">Reserve a Table</span>
+          </div>
+        </div>
+        <div class="usage-bar light">
+          <div>
+            <div class="usage-label">Digital + Social</div>
+            <div class="usage-sample" style="color: var(--midnight-tide);">Website, Instagram, Email</div>
+          </div>
+          <div style="margin-left: auto;">
+            <span class="usage-cta coral">Order Now</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ TYPOGRAPHY ═══════ -->
+  <section class="type-section">
+    <div class="container">
+      <p class="section-label">Typography</p>
+      <h2 class="section-title">Three Fonts, Clear Roles</h2>
+      <p class="section-intro">
+        Cormorant Garamond carries the brand's soul. Outfit handles readability across body copy. DM Sans brings Concept 3's contemporary clarity to digital interfaces.
+      </p>
+
+      <div class="type-grid">
+        <div class="type-specimen">
+          <div>
+            <div class="type-role">Display / Headlines</div>
+            <div class="type-preview-display">Cormorant Garamond</div>
+            <p class="type-meta"><strong>Use:</strong> Logo wordmark, headlines, menu headers, section titles, hero text</p>
+            <p class="type-meta"><strong>Weights:</strong> Light (300), Regular (400), Medium (500), Semibold (600)</p>
+            <p class="type-meta"><strong>Source:</strong> Concept 1 — available on Google Fonts + Adobe Fonts</p>
+          </div>
+
+          <div>
+            <div class="type-role">Body / Content</div>
+            <div class="type-preview-body">Outfit — clean, geometric, modern readability with warmth</div>
+            <p class="type-meta"><strong>Use:</strong> Paragraphs, descriptions, menu item copy, about sections</p>
+            <p class="type-meta"><strong>Weights:</strong> Light (200), Regular (300–400), Medium (500)</p>
+            <p class="type-meta"><strong>Source:</strong> Brand system — available on Google Fonts</p>
+          </div>
+        </div>
+
+        <div class="type-specimen">
+          <div>
+            <div class="type-role">UI / Digital Interface</div>
+            <div class="type-preview-ui">DM Sans — buttons, navigation, forms, captions, metadata</div>
+            <p class="type-meta"><strong>Use:</strong> Website nav, CTAs, form labels, social overlays, email headers</p>
+            <p class="type-meta"><strong>Weights:</strong> Regular (400), Medium (500), Semibold (600), Bold (700)</p>
+            <p class="type-meta"><strong>Source:</strong> Concept 3 influence — available on Google Fonts</p>
+          </div>
+
+          <div style="padding: 24px; background: var(--midnight-tide); border-radius: 8px; color: var(--coastal-sand);">
+            <div class="type-role" style="color: var(--coral-sunset);">The Pairing in Action</div>
+            <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; margin-bottom: 8px; font-weight: 400;">Wherever the Tide Takes You</div>
+            <div style="font-family: 'Outfit', sans-serif; font-size: 0.85rem; font-weight: 300; opacity: 0.75; margin-bottom: 16px; line-height: 1.6;">Coastal cuisine and curated cocktails in a space designed for the moments that matter — from afternoon sun to evening glow.</div>
+            <span style="font-family: 'DM Sans', sans-serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; background: var(--coral-sunset); padding: 10px 24px; border-radius: 4px; color: white; display: inline-block;">View Our Menu</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hierarchy -->
+      <div class="type-hierarchy">
+        <div class="type-hierarchy-title">Typography Hierarchy</div>
+
+        <div class="hier-row">
+          <span class="hier-level">H1 / Hero</span>
+          <span class="hier-sample" style="font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; font-weight: 400;">Wherever the Tide Takes You</span>
+          <span class="hier-spec">Cormorant Garamond Regular / 48–64pt</span>
+        </div>
+
+        <div class="hier-row">
+          <span class="hier-level">H2 / Section</span>
+          <span class="hier-sample" style="font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 500;">Coastal Cuisine + Curated Cocktails</span>
+          <span class="hier-spec">Cormorant Garamond Medium / 28–36pt</span>
+        </div>
+
+        <div class="hier-row">
+          <span class="hier-level">H3 / Category</span>
+          <span class="hier-sample" style="font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--coral-sunset);">From the Sea</span>
+          <span class="hier-spec">DM Sans Semibold / 14–16pt / uppercase</span>
+        </div>
+
+        <div class="hier-row">
+          <span class="hier-level">Body</span>
+          <span class="hier-sample" style="font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 300;">Blackened Mahi, Cucumber Salad, Mango Slaw</span>
+          <span class="hier-spec">Outfit Light / 14–16pt</span>
+        </div>
+
+        <div class="hier-row">
+          <span class="hier-level">UI / Nav</span>
+          <span class="hier-sample" style="font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em;">Menu &nbsp;&nbsp; Locations &nbsp;&nbsp; Reservations &nbsp;&nbsp; About</span>
+          <span class="hier-spec">DM Sans Medium / 12–14pt</span>
+        </div>
+
+        <div class="hier-row">
+          <span class="hier-level">Utility</span>
+          <span class="hier-sample" style="font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; color: #999;">$18 · GF · Contains Shellfish</span>
+          <span class="hier-spec">DM Sans Semibold / 12–13pt</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ LOGO SYSTEM ═══════ -->
+  <section class="logo-section">
+    <div class="container">
+      <p class="section-label">Logo System</p>
+      <h2 class="section-title">Primary Lockup + Variations</h2>
+      <p class="section-intro">
+        The botanical palm illustration paired with the Cormorant Garamond wordmark is the brand anchor. It works across all four core background contexts. The tagline uses DM Sans — the C3 influence — for modern crispness at small sizes.
+      </p>
+
+      <div class="logo-grid">
+        <div class="logo-box sand">
+          <span class="env-label">Sand / Light</span>
+          <span class="logo-wordmark navy-text">ZUNZIBAR</span>
+          <span class="logo-sub gold">Coastal Cuisine + Curated Cocktails</span>
+        </div>
+        <div class="logo-box navy">
+          <span class="env-label" style="color: rgba(245,240,232,0.4);">Navy / Dark</span>
+          <span class="logo-wordmark sand-text">ZUNZIBAR</span>
+          <span class="logo-sub gold">Coastal Cuisine + Curated Cocktails</span>
+        </div>
+        <div class="logo-box white">
+          <span class="env-label">White / Clean</span>
+          <span class="logo-wordmark navy-text">ZUNZIBAR</span>
+          <span class="logo-sub coral">Coastal Cuisine + Curated Cocktails</span>
+        </div>
+        <div class="logo-box charcoal">
+          <span class="env-label" style="color: rgba(255,255,255,0.3);">Charcoal / Digital</span>
+          <span class="logo-wordmark white-text">ZUNZIBAR</span>
+          <span class="logo-sub coral">Coastal Cuisine + Curated Cocktails</span>
+        </div>
+      </div>
+
+      <!-- Icon System -->
+      <div class="icon-system">
+        <p class="section-label">Favicon + Social Icons</p>
+        <p style="font-size: 0.9rem; color: var(--charcoal-soft); max-width: 600px; margin-top: 8px;">
+          Four icon options for profile circles, favicons, and app icons. The palm tree icon inherits from C1; the monogram gains C3's clean confidence.
+        </p>
+        <div class="icon-row">
+          <div class="icon-item">
+            <div class="icon-box" style="background: var(--midnight-tide);">
+              <svg viewBox="0 0 60 60" fill="none">
+                <path d="M18 56 Q17 50 18 44 Q19 38 18 33" stroke="#C9A962" stroke-width="2.2" stroke-linecap="round"/>
+                <path d="M18 33 Q12 31 6 25 Q3 21 1 15" stroke="#8B9A8B" stroke-width="1.1" stroke-linecap="round"/>
+                <path d="M18 33 Q14 29 10 21 Q7 15 6 9" stroke="#8B9A8B" stroke-width="1.1" stroke-linecap="round"/>
+                <path d="M18 33 Q16 27 14 19 Q13 13 14 7" stroke="#F5F0E8" stroke-width="1.1" stroke-linecap="round"/>
+                <path d="M18 33 Q20 27 22 19 Q24 13 23 7" stroke="#8B9A8B" stroke-width="1.1" stroke-linecap="round"/>
+                <path d="M38 56 Q37 46 38 36 Q39 28 38 22" stroke="#C9A962" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M38 22 Q34 18 30 10 Q28 4 30 0" stroke="#8B9A8B" stroke-width="1.2" stroke-linecap="round"/>
+                <path d="M38 22 Q38 14 38 6 Q38 2 38 0" stroke="#F5F0E8" stroke-width="1.2" stroke-linecap="round"/>
+                <path d="M38 22 Q42 18 48 12 Q52 6 54 2" stroke="#8B9A8B" stroke-width="1.2" stroke-linecap="round"/>
+                <path d="M38 22 Q46 20 52 16 Q56 12 58 8" stroke="#8B9A8B" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="icon-caption">Navy / Default</span>
+          </div>
+
+          <div class="icon-item">
+            <div class="icon-box" style="background: var(--coastal-sand); border: 1px solid #ddd;">
+              <svg viewBox="0 0 60 60" fill="none">
+                <path d="M18 56 Q17 50 18 44 Q19 38 18 33" stroke="#8B7355" stroke-width="2.2" stroke-linecap="round"/>
+                <path d="M18 33 Q12 31 6 25 Q3 21 1 15" stroke="#5C6B5A" stroke-width="1.1" stroke-linecap="round"/>
+                <path d="M18 33 Q14 29 10 21 Q7 15 6 9" stroke="#5C6B5A" stroke-width="1.1" stroke-linecap="round"/>
+                <path d="M18 33 Q16 27 14 19 Q13 13 14 7" stroke="#3D5C3D" stroke-width="1.1" stroke-linecap="round"/>
+                <path d="M18 33 Q20 27 22 19 Q24 13 23 7" stroke="#5C6B5A" stroke-width="1.1" stroke-linecap="round"/>
+                <path d="M38 56 Q37 46 38 36 Q39 28 38 22" stroke="#8B7355" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M38 22 Q34 18 30 10 Q28 4 30 0" stroke="#5C6B5A" stroke-width="1.2" stroke-linecap="round"/>
+                <path d="M38 22 Q38 14 38 6 Q38 2 38 0" stroke="#3D5C3D" stroke-width="1.2" stroke-linecap="round"/>
+                <path d="M38 22 Q42 18 48 12 Q52 6 54 2" stroke="#5C6B5A" stroke-width="1.2" stroke-linecap="round"/>
+                <path d="M38 22 Q46 20 52 16 Q56 12 58 8" stroke="#5C6B5A" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="icon-caption">Sand / Light</span>
+          </div>
+
+          <div class="icon-item">
+            <div class="icon-box" style="background: var(--midnight-tide);">
+              <span class="mono" style="font-family: 'Cormorant Garamond', serif; color: var(--driftwood);">Z</span>
+            </div>
+            <span class="icon-caption">Monogram / Navy</span>
+          </div>
+
+          <div class="icon-item">
+            <div class="icon-box" style="background: var(--coral-sunset);">
+              <span class="mono" style="font-family: 'Cormorant Garamond', serif; color: white;">Z</span>
+            </div>
+            <span class="icon-caption">Monogram / Coral</span>
+          </div>
+
+          <div class="icon-item">
+            <div class="icon-box" style="background: var(--charcoal);">
+              <span class="mono" style="font-family: 'DM Sans', sans-serif; font-weight: 600; color: var(--coastal-sand);">Z</span>
+            </div>
+            <span class="icon-caption">DM Sans / Digital</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ DIGITAL APPLICATIONS ═══════ -->
+  <section class="digital-section">
+    <div class="container">
+      <p class="section-label">Digital Applications</p>
+      <h2 class="section-title">Where Concept 3 Lives</h2>
+      <p class="section-intro">
+        The 20% modern influence shows up strongest on screens. DM Sans handles navigation, Coral Sunset drives action, and Charcoal backgrounds give the brand a contemporary edge in digital spaces.
+      </p>
+
+      <div class="digital-grid">
+        <div class="digital-card navy-bg">
+          <div class="dc-label">Website Header</div>
+          <div class="dc-nav">
+            <span class="active">Menu</span>
+            <span>Locations</span>
+            <span>Reserve</span>
+            <span>About</span>
+          </div>
+          <div class="dc-sample" style="margin-top: 16px;">Wherever the Tide Takes You</div>
+          <div class="dc-button coral">Reserve a Table</div>
+        </div>
+
+        <div class="digital-card dark-bg">
+          <div class="dc-label">Email / Newsletter</div>
+          <div class="dc-sample">This Week at Zunzibar</div>
+          <div style="font-family: 'Outfit', sans-serif; font-size: 0.85rem; opacity: 0.6; font-weight: 300;">New seasonal cocktails, live DJ Friday, weekend brunch returns.</div>
+          <div class="dc-button outline">See What's On</div>
+        </div>
+
+        <div class="digital-card coral-bg">
+          <div class="dc-label">Social / Stories CTA</div>
+          <div class="dc-sample" style="font-size: 1.3rem;">Happy Hour<br>4–7 Daily</div>
+          <div class="dc-button white">View Specials</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ PHYSICAL APPLICATIONS ═══════ -->
+  <section class="physical-section">
+    <div class="container">
+      <p class="section-label">Physical Applications</p>
+      <h2 class="section-title">Where Concept 1 Lives</h2>
+      <p class="section-intro">
+        The 80% refined direction dominates physical touchpoints. Navy linen menus, embossed coasters, foil-stamped matchbooks — these are the textures that make "lived-in luxury" tangible.
+      </p>
+
+      <div class="physical-grid">
+        <div class="physical-card navy">
+          <span class="pc-type">Menu Cover</span>
+          <span class="pc-logo">ZUNZIBAR</span>
+          <span class="pc-sub" style="color: var(--driftwood);">Coastal Cuisine + Curated Cocktails</span>
+          <span class="pc-type" style="margin-top: auto;">Embossed Navy Linen</span>
+        </div>
+
+        <div class="physical-card sand">
+          <span class="pc-type">Matchbook / Coaster</span>
+          <span class="pc-logo" style="font-size: 1.4rem;">ZUNZIBAR</span>
+          <span class="pc-sub" style="color: var(--sea-glass);">Jupiter · Savannah · Jacksonville</span>
+          <span class="pc-type" style="margin-top: auto;">Uncoated Warm Stock</span>
+        </div>
+
+        <div class="physical-card leather">
+          <span class="pc-type">Check Presenter</span>
+          <span class="pc-logo" style="color: var(--driftwood);">ZUNZIBAR</span>
+          <span class="pc-sub" style="color: rgba(245,240,232,0.5);">Distressed Leather + Gold Foil</span>
+          <span class="pc-type" style="margin-top: auto;">Antique Brass Hardware</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ USAGE RULES ═══════ -->
+  <section class="rules-section">
+    <div class="container">
+      <p class="section-label">Application Rules</p>
+      <h2 class="section-title">When to Use What</h2>
+
+      <div class="rules-grid">
+        <div class="rule-card">
+          <h4 class="do">✦ Coral Sunset — Do</h4>
+          <ul class="rule-list do">
+            <li>Website CTAs (Reserve, Order, View Menu)</li>
+            <li>Social media story highlights and swipe-up links</li>
+            <li>Email buttons and action prompts</li>
+            <li>Digital ads — primary action button</li>
+            <li>Instagram grid accent overlays</li>
+            <li>Menu category labels (digital menus only)</li>
+          </ul>
+        </div>
+
+        <div class="rule-card">
+          <h4 class="dont">✦ Coral Sunset — Don't</h4>
+          <ul class="rule-list dont">
+            <li>Physical menu headers or printed signage</li>
+            <li>Logo lockup backgrounds</li>
+            <li>Large background fills on the website</li>
+            <li>Replace Driftwood Gold on print materials</li>
+            <li>Use as body text color</li>
+            <li>Pair directly with Driftwood Gold (visual clash)</li>
+          </ul>
+        </div>
+
+        <div class="rule-card">
+          <h4 class="do">✦ DM Sans — Do</h4>
+          <ul class="rule-list do">
+            <li>Website navigation and button text</li>
+            <li>Form labels and input fields</li>
+            <li>Social media overlay text and captions</li>
+            <li>Category labels and metadata (H3+ level)</li>
+            <li>Digital advertising copy</li>
+            <li>Email pre-headers and utility text</li>
+          </ul>
+        </div>
+
+        <div class="rule-card">
+          <h4 class="dont">✦ DM Sans — Don't</h4>
+          <ul class="rule-list dont">
+            <li>Replace Cormorant Garamond in headlines</li>
+            <li>Use for printed menu item names</li>
+            <li>Use for the primary logo wordmark</li>
+            <li>Replace Outfit for body paragraphs</li>
+            <li>Use in light weights below 400 (readability)</li>
+            <li>Set larger than 16pt — it's a utility font here</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ SUMMARY TABLE ═══════ -->
+  <section class="summary-section">
+    <div class="container">
+      <p class="section-label" style="color: var(--driftwood);">Quick Reference</p>
+      <h2 class="section-title">Refined Direction at a Glance</h2>
+
+      <table class="summary-table">
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Choice</th>
+            <th>Context</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Primary Color</td>
+            <td>Midnight Tide #1B365D <span class="source-badge c1">C1</span></td>
+            <td>Brand anchor across all touchpoints</td>
+          </tr>
+          <tr>
+            <td>Background</td>
+            <td>Coastal Sand #F5F0E8 <span class="source-badge c1">C1</span></td>
+            <td>Light mode default, print backgrounds</td>
+          </tr>
+          <tr>
+            <td>Luxury Accent</td>
+            <td>Driftwood Gold #C9A962 <span class="source-badge c1">C1</span></td>
+            <td>Foil, emboss, print highlights, tagline</td>
+          </tr>
+          <tr>
+            <td>Digital Action</td>
+            <td>Coral Sunset #D4785A <span class="source-badge c3">C3</span></td>
+            <td>CTAs, buttons, social highlights, email</td>
+          </tr>
+          <tr>
+            <td>Botanical / Tertiary</td>
+            <td>Sea Glass #8B9A8B <span class="source-badge c1">C1</span></td>
+            <td>Palm illustration, natural accents</td>
+          </tr>
+          <tr>
+            <td>Text / Dark UI</td>
+            <td>Charcoal #2D2D2D <span class="source-badge c3">C3</span></td>
+            <td>Digital body text, dark mode base</td>
+          </tr>
+          <tr>
+            <td>Display Font</td>
+            <td>Cormorant Garamond <span class="source-badge c1">C1</span></td>
+            <td>Headlines, hero, logo, menu headers</td>
+          </tr>
+          <tr>
+            <td>Body Font</td>
+            <td>Outfit <span class="source-badge c1">C1</span></td>
+            <td>Paragraphs, descriptions, menu copy</td>
+          </tr>
+          <tr>
+            <td>UI Font</td>
+            <td>DM Sans <span class="source-badge c3">C3</span></td>
+            <td>Nav, buttons, forms, digital utility</td>
+          </tr>
+          <tr>
+            <td>Logo</td>
+            <td>Botanical Palm + Serif Wordmark <span class="source-badge c1">C1</span></td>
+            <td>Tagline set in DM Sans for crispness</td>
+          </tr>
+          <tr>
+            <td>Icon / Favicon</td>
+            <td>Palm illustration or Z monogram</td>
+            <td>Coral monogram for social; Navy for favicon</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══════ FOOTER ═══════ -->
+  <div class="footer">
+    Blue Sky Studio — Zunzibar Refined Direction v2 — February 2026
+  </div>
+
+</body>
+</html>
